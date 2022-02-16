@@ -1,4 +1,4 @@
-from Tkinter import *
+#from Tkinter import *
 import random
 
 class Jeu:
@@ -61,7 +61,8 @@ class Jeu:
                 _jeu.chevalier +=1
             _jeu.listjoueurs[i].pts.set(compteur+_jeu.listjoueurs[i].victory+_jeu.listjoueurs[i].knight2)
             if _jeu.listjoueurs[i].pts.get() > 8:
-                print "LE JOUEUR "+str(_jeu.listjoueurs[i].color)+" EST LE VAINQUEUR !"
+                print("LE JOUEUR " + str(_jeu.listjoueurs[i].color) + " EST LE VAINQUEUR !")
+
     def monop (self,_fenetre, _matiere):#la carte monopole donne toutes les matieres d'un type au joueur qui la joue
         compteur=0
         if _matiere == "bois":
@@ -200,13 +201,14 @@ class Ile:#contient des fonctions de l'interface de jeu comme de creation du pla
         return 0
     def affiche(self): #fonction qui affichait les hexagones crees (pour le deboguage)
         listeHexagones=self.hexacoord.values()
-        for hexagone in listeHexagones: print hexagone
+        for hexagone in listeHexagones: print(hexagone)
         for sommet in self.sommets.values():
             chaine=""
             chaine+="sommet:"+str(sommet.num)+" successeurs:"
             for s in sommet.listsuccess:
                 chaine+=" "+str(s.num)+" "
-            print chaine
+            print(chaine)
+
     def ajouterhexagone (self, hexagone):
         self.nbhexaposes=self.nbhexaposes+1
         self.hexacoord[hexagone.x, hexagone.y]=hexagone

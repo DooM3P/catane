@@ -1,4 +1,4 @@
-from Tkinter import *
+# from Tkinter import *
 from monjeu2 import *
 from fenetres import *
 
@@ -61,12 +61,13 @@ class gestionnaireFenetres:
         menubar.add_command(label="Quit", command=root.quit)
         root.config(menu=menubar)
     def info(self):#Option uniquement presente dans un but de deboguage pas forcement utile pour le joueur
-        print jeu.listjoueurs
+        print(jeu.listjoueurs)
         for i in jeu.listjoueurs.keys():
-            print jeu.listjoueurs[i].villages
-        print jeu.ile.routes.keys()
+            print(jeu.listjoueurs[i].villages)
+        print(jeu.ile.routes.keys())
         for i in jeu.ile.routes.keys():
-            print jeu.ile.routes[i].color, i
+            print(jeu.ile.routes[i].color, i)
+
     def cartes(self): # le menu des cartes developpement
         if not jeu.currentcolor == "":
             self.fenetreCourante3=cartes(self, self.root)

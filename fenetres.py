@@ -1,4 +1,4 @@
-from Tkinter import *
+# from Tkinter import *
 from monjeu2 import *
 import math
 jeu=Jeu (Ile())
@@ -286,7 +286,7 @@ class build: # on pose les deux premieres colonies gratuites
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("road")
         else:
-            print "Sommet incorrect !"
+            print("Sommet incorrect !")
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("build")
 
@@ -314,7 +314,7 @@ class road: #ici, pour poser la route, on ne demande que l'arrivee au joueur, le
                     self.f2.destroy()
                     self.gestionnaireFenetres.loadFenetreSuivante("build")
                     return "break"
-        print "Sommet incorrect !"
+        print("Sommet incorrect !")
 
 class game1: #Juste le lancer de de au debut de chaque tour
     def __init__ (self,_gestionnaireFenetres):
@@ -366,7 +366,7 @@ class game2:# les differents boutons d'action du joueurs (poser une route, une c
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("road2")
         else:
-            print "Pas assez de matieres premieres"
+            print("Pas assez de matieres premieres")
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("game2")
     def trade(self):
@@ -376,7 +376,7 @@ class game2:# les differents boutons d'action du joueurs (poser une route, une c
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("colonie")
         else:
-            print "Pas assez de matieres premieres"
+            print("Pas assez de matieres premieres")
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("game2")
     def ville (self):
@@ -384,13 +384,13 @@ class game2:# les differents boutons d'action du joueurs (poser une route, une c
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("ville")
         else:
-            print "Pas assez de matieres premieres"
+            print("Pas assez de matieres premieres")
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("game2")
     def carte (self):
         if jeu.listjoueurs[jeu.currentcolor].ble.get() > 0 and jeu.listjoueurs[jeu.currentcolor].laine.get() > 0 and jeu.listjoueurs[jeu.currentcolor].minerai.get() > 0:
             if len(jeu.cards)>0:
-                print "Vous avez pioche "+str(jeu.cards[0])
+                print("Vous avez pioche "+str(jeu.cards[0]))
                 if jeu.cards[0]=="Victoire":
                     jeu.listjoueurs[jeu.currentcolor].cards[0] += 1
                 if jeu.cards[0]=="Chevalier":
@@ -407,9 +407,9 @@ class game2:# les differents boutons d'action du joueurs (poser une route, une c
                 jeu.listjoueurs[jeu.currentcolor].minerai.set(jeu.listjoueurs[jeu.currentcolor].minerai.get()-1)
                 jeu.listjoueurs[jeu.currentcolor].laine.set(jeu.listjoueurs[jeu.currentcolor].laine.get()-1)
             else:
-                print "Plus de cartes !"
+                print("Plus de cartes !")
         else:
-            print "Pas assez de matieres premieres"
+            print("Pas assez de matieres premieres")
     def findetour (self, event):
         jeu.compteur(jeu, self.gestionnaireFenetres)
         jeu.plyrcount=jeu.plyrcount+1
@@ -439,9 +439,9 @@ class road2:#plus compliquee que road1 car deux extremites a definir et il faut 
                     jeu.listjoueurs[jeu.currentcolor].argile.set(jeu.listjoueurs[jeu.currentcolor].argile.get()-1)
                     self.f2.destroy()
                     self.gestionnaireFenetres.loadFenetreSuivante("game2")
-                else : print "Il n'y a pas de route "+str(jeu.currentcolor)+" a cote"
-            else : print "Il y a deja une route ici"
-        else : print "Route mal mise"
+                else : print("Il n'y a pas de route "+str(jeu.currentcolor)+" a cote")
+            else : print("Il y a deja une route ici")
+        else : print("Route mal mise")
     def ok3 (self):
         self.f2.destroy()
         self.gestionnaireFenetres.loadFenetreSuivante("game2")
@@ -490,9 +490,9 @@ class colonie:
                 self.f2.destroy()
                 self.gestionnaireFenetres.loadFenetreSuivante("game2")
             else:
-                print "Pas de routes proches"
+                print("Pas de routes proches")
         else:
-            print"SommetIncorrect"
+            print("SommetIncorrect")
     def ok3 (self):
         self.f2.destroy()
         self.gestionnaireFenetres.loadFenetreSuivante("game2")
@@ -538,7 +538,7 @@ class ville:
             self.f2.destroy()
             self.gestionnaireFenetres.loadFenetreSuivante("game2")
         else:
-            print"SommetIncorrect"
+            print("SommetIncorrect")
     def ok3 (self):
         self.f2.destroy()
         self.gestionnaireFenetres.loadFenetreSuivante("game2")
@@ -586,7 +586,7 @@ class trade:
         self.fenetretop.f6.button3 = Button (self.fenetretop, text = "Annuler", command = self.leave, width=15)
         self.fenetretop.f6.button3.grid(column = 1, row = 8)
     def rouge (self): #Ici, j'aurais vraiment pu mettre une fonction pour eviter ces repetitions...
-        print int(self.fenetretop.f6.bois.get())
+        print(int(self.fenetretop.f6.bois.get()))
         if jeu.listjoueurs.has_key("Rouge"):
             if jeu.listjoueurs["Rouge"].bois.get() >= int(self.fenetretop.f6.bois.get()) and jeu.listjoueurs["Rouge"].argile.get() >= int(self.fenetretop.f6.argile.get()) and jeu.listjoueurs["Rouge"].ble.get() >= int(self.fenetretop.f6.ble.get()) and jeu.listjoueurs["Rouge"].laine.get() >= int(self.fenetretop.f6.laine.get()) and jeu.listjoueurs["Rouge"].minerai.get() >= int(self.fenetretop.f6.minerai.get()):
                 jeu.listjoueurs["Rouge"].bois.set(jeu.listjoueurs["Rouge"].bois.get()-int(self.fenetretop.f6.bois.get()))#on effectue les echanges de ressources
@@ -712,7 +712,7 @@ class cartes:#menu des cartes (mis dans "menubar")
             jeu.listjoueurs[jeu.currentcolor].knight +=1
         self.fenetretop.destroy()
         _gestionnaireFenetres.fenetreCourante2.f2.destroy()
-        print "Chevalier !"
+        print("Chevalier !")
         _gestionnaireFenetres.loadFenetreSuivante("rogue")
     def monop (self):
         if jeu.listjoueurs[jeu.currentcolor].cards[2] > 0:
