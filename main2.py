@@ -1,4 +1,4 @@
-# from Tkinter import *
+from tkinter import *
 from monjeu2 import *
 from fenetres import *
 
@@ -48,7 +48,7 @@ jeu.ile.ajouterhexagone(hexagoneCourant)
 
 #gestionnaire principal des changements de fenetres
 
-root = Tk ()
+root = Tk()
 class gestionnaireFenetres:
     def __init__(self, _root):
         self.root=_root
@@ -61,12 +61,12 @@ class gestionnaireFenetres:
         menubar.add_command(label="Quit", command=root.quit)
         root.config(menu=menubar)
     def info(self):#Option uniquement presente dans un but de deboguage pas forcement utile pour le joueur
-        print(jeu.listjoueurs)
-        for i in jeu.listjoueurs.keys():
-            print(jeu.listjoueurs[i].villages)
-        print(jeu.ile.routes.keys())
-        for i in jeu.ile.routes.keys():
-            print(jeu.ile.routes[i].color, i)
+        print((jeu.listjoueurs))
+        for i in list(jeu.listjoueurs.keys()):
+            print((jeu.listjoueurs[i].villages))
+        print((list(jeu.ile.routes.keys())))
+        for i in list(jeu.ile.routes.keys()):
+            print((jeu.ile.routes[i].color, i))
 
     def cartes(self): # le menu des cartes developpement
         if not jeu.currentcolor == "":
